@@ -1,0 +1,8 @@
+0.3.0
+R-WikidataR
+R-crul
+R-data.table
+R-jsonlite
+R-tibble
+R-vcr
+R-xml2
