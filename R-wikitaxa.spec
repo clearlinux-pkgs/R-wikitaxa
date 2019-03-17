@@ -4,32 +4,34 @@
 #
 Name     : R-wikitaxa
 Version  : 0.3.0
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Summary  : Taxonomic Information from 'Wikipedia'
 Group    : Development/Tools
 License  : MIT
-Requires: R-WikidataR
-Requires: R-crul
-Requires: R-data.table
-Requires: R-jsonlite
-Requires: R-tibble
-Requires: R-vcr
-Requires: R-xml2
+Requires: R-urltools
+Requires: R-yaml
 BuildRequires : R-WikidataR
 BuildRequires : R-crul
 BuildRequires : R-data.table
 BuildRequires : R-jsonlite
 BuildRequires : R-tibble
+BuildRequires : R-urltools
 BuildRequires : R-vcr
 BuildRequires : R-xml2
+BuildRequires : R-yaml
 BuildRequires : buildreq-R
 
 %description
-'Wikispecies', and 'Wikidata'. Functions included for getting
-    taxonomic information from each of the sources just listed, as
-    well performing taxonomic search.
+wikitaxa
+========
+[![Project Status: Active â The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![cran checks](https://cranchecks.info/badges/worst/wikitaxa)](https://cranchecks.info/pkgs/wikitaxa)
+[![Build Status](https://api.travis-ci.org/ropensci/wikitaxa.svg?branch=master)](https://travis-ci.org/ropensci/wikitaxa)
+[![codecov](https://codecov.io/gh/ropensci/wikitaxa/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/wikitaxa)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/wikitaxa)](https://github.com/metacran/cranlogs.app)
+[![cran version](https://www.r-pkg.org/badges/version/wikitaxa)](https://cran.r-project.org/package=wikitaxa)
 
 %prep
 %setup -q -c -n wikitaxa
@@ -39,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540495147
+export SOURCE_DATE_EPOCH=1552837540
 
 %install
-export SOURCE_DATE_EPOCH=1540495147
+export SOURCE_DATE_EPOCH=1552837540
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -78,8 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library wikitaxa|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  wikitaxa || :
 
 
 %files
@@ -114,3 +115,30 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/wikitaxa/help/wikitaxa.rdx
 /usr/lib64/R/library/wikitaxa/html/00Index.html
 /usr/lib64/R/library/wikitaxa/html/R.css
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wiki_page.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wiki_page_non_empty.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wiki_page_non_empty_common_names.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikicommons1.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikicommons2.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikicommons_parse.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikicommons_search.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikicommons_search_not_found.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikipedia_malus.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikipedia_parse.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikipedia_poa.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikipedia_search.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikipedia_search_not_found.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikispecies_malus.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikispecies_parse.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikispecies_poa.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikispecies_search.yml
+/usr/lib64/R/library/wikitaxa/tests/fixtures/vcr_cassettes/wt_wikispecies_search_not_found.yml
+/usr/lib64/R/library/wikitaxa/tests/test-all.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/helper-wikitaxa.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wikicommons.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wikipedia.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wikispecies.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wt_data.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wt_wiki_page.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wt_wiki_url_build.R
+/usr/lib64/R/library/wikitaxa/tests/testthat/test-wt_wiki_url_parse.R
