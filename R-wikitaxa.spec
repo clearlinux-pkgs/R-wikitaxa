@@ -4,19 +4,23 @@
 #
 Name     : R-wikitaxa
 Version  : 0.3.0
-Release  : 9
+Release  : 10
 URL      : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Summary  : Taxonomic Information from 'Wikipedia'
 Group    : Development/Tools
 License  : MIT
-Requires: R-urltools
-Requires: R-yaml
+Requires: R-curl
+Requires: R-httpcode
+Requires: R-triebeard
 BuildRequires : R-WikidataR
 BuildRequires : R-crul
+BuildRequires : R-curl
 BuildRequires : R-data.table
+BuildRequires : R-httpcode
 BuildRequires : R-jsonlite
 BuildRequires : R-tibble
+BuildRequires : R-triebeard
 BuildRequires : R-urltools
 BuildRequires : R-vcr
 BuildRequires : R-xml2
@@ -41,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552837540
+export SOURCE_DATE_EPOCH=1552918814
 
 %install
-export SOURCE_DATE_EPOCH=1552837540
+export SOURCE_DATE_EPOCH=1552918814
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "

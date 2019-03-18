@@ -1,9 +1,12 @@
 0.3.0
 R-WikidataR
 R-crul
+R-curl
 R-data.table
+R-httpcode
 R-jsonlite
 R-tibble
+R-triebeard
 R-urltools
 R-vcr
 R-xml2
