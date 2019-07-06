@@ -4,7 +4,7 @@
 #
 Name     : R-wikitaxa
 Version  : 0.3.0
-Release  : 13
+Release  : 14
 URL      : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/wikitaxa_0.3.0.tar.gz
 Summary  : Taxonomic Information from 'Wikipedia'
